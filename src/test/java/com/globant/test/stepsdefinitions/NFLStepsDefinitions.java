@@ -4,6 +4,7 @@ import com.globant.test.questions.TheNFLTitle;
 import com.globant.test.tasks.EnterToThe;
 import com.globant.test.tasks.OpenThe;
 import com.globant.test.tasks.Remove;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,6 +16,17 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.Matchers.equalTo;
 
 public class NFLStepsDefinitions {
+    private static String OS = System.getProperty("os.name").toLowerCase();
+
+    @Before
+    public void startDriver(){
+        if (OS.indexOf("win") >= 0){
+            System.getProperty("webdriver.chrome.driver", "chromedriver.exe");
+        }else if(OS.indexOf("mac") >= 0){
+            System.getProperty("webdriver.chrome.driver", "chromedriver");
+        }
+    }
+
     @Managed(driver = "chrome")
     private WebDriver suNavegador;
     private static Actor oscar = Actor.named("Oscar");
