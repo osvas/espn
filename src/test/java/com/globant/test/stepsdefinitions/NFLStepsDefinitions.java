@@ -31,7 +31,7 @@ public class NFLStepsDefinitions {
     private WebDriver suNavegador;
     private static Actor oscar = Actor.named("Oscar");
 
-    @Given("^Oscar enter the espn page$")
+    @Given("^Oscar enter to the espn page$")
     public void iEnterTheEspnPage() {
         oscar.can(BrowseTheWeb.with(suNavegador));
         oscar.attemptsTo(
@@ -39,10 +39,9 @@ public class NFLStepsDefinitions {
         oscar.attemptsTo(Remove.ads());
     }
 
-    @When("^I enter the nfl standings$")
+    @When("^I enter to the Playoff Machine page$")
     public void iEnterTheNflStandings() {
-        oscar.attemptsTo(EnterToThe.standings());
-        oscar.attemptsTo(Remove.ads());
+        oscar.attemptsTo(EnterToThe.playoffMachine());
     }
 
     @Then("^I verify that the (.*) is visible$")
